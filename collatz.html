@@ -1,0 +1,32 @@
+<style>
+</style>
+<h1 class="center">collatz conjecture calculator</h1>
+<p class="center">the collats conjecture or 3n+1 is a conjecture where if the number is even, <br>do n/2, but if the number is odd, do 3n+1 over and over until you reach one</p>
+<input type="number" class="centera" id="in"/>
+<br>
+<button onClick="normal()" class="centerb">click me to figure out this number in the collatz conjecture</button>
+<p id="out" class="center"></p>
+<script>
+	let x = document.getElementById("in")
+	let y = document.getElementById("out")
+  let z = "z" 
+	function normal() {
+    if (z == 1 || z == 0 || z == -1) {
+      y.innerHTML = ""
+      z = "z"
+    }
+    if (z == "z") {z = x.value}
+    if (z == x.value) {
+      y.innerHTML = z
+    }
+		if (z % 2 == 0) { 
+			z = z/2
+		} else {
+			z = z*3+1
+    }
+    y.innerHTML = y.innerHTML + ", " + z
+    if (z != 1 && z != 0 && z != -1) {
+      normal()
+    }
+	}
+</script>
