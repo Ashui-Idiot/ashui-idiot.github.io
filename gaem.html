@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <title> zombie gaem </title>
@@ -12,11 +13,9 @@
 </head>
 
 <body onLoad="startGame()">
-<!--
-  <p id="stateOlife">State of Life: Alive</p>
-  <button onClick="startGame()">Restart Button</button>
--->
 <p id="ZombieScore">Kills: <span id="zombsIG"></span></p>
+<br><button onClick="location.reload()">Restart Button</button>
+	<p> also if the games pauses you failed lol, press the restart button.</p>
 </body>
 <script>
 let boxMomentLol;
@@ -29,6 +28,7 @@ let zombie2;
 let zombie3;
 let zombie4;
 let zombieDiedLol = 0
+let alive = 1
 /*
 var x = document.getElementById("stateOlife")
 if (dead === 1) {
@@ -49,8 +49,9 @@ function startGame() {
     zombie2.speedX = -0.2
     zombie3.speedX = 0.2
     zombie4.speedX = 0.2
-    dead = 0
+    alive = 1
     useFunc = 1
+	zombieDiedLol = 0
     // x.innerHTML = "State Of Life: Alive"
 }
 // #b5a32b is the sandbag color
@@ -124,14 +125,8 @@ function componentZom(width, height, color, x, y) {
     return crash;
   }
 }
-
-function deadPlayer() {
-  dead = 1
-  startGame()
-}
 	
 
-let dead = 0
 let row = Math.ceil(Math.random() * 6)
 var zombsIG = document.getElementById("zombsIG");
 function speed() {
@@ -143,6 +138,7 @@ function speed() {
 	}
 }
 function updateGameArea() {
+		if (alive == 1) {
     zombsIG.innerHTML = zombieDiedLol
     myGameArea.clear();
     boxMomentLol.newPos();    
@@ -166,28 +162,28 @@ function updateGameArea() {
       zombie2.x = 2000
       zombie3.x = 2000
       zombie4.x = 200
-      location.reload();0
+      alive = 0
     }
 	  if (sandbag1.crashWith(zombie2)) {
       zombie1.x = 2000
       zombie2.x = 2000
       zombie3.x = 2000
       zombie4.x = 2000
-      location.reload();
+      alive = 0
     }
     if (sandbag2.crashWith(zombie3)) {
       zombie1.x = 2000
       zombie2.x = 2000
       zombie3.x = 2000
       zombie4.x = 2000
-      location.reload();
+      alive = 0
     }
 	  if (sandbag2.crashWith(zombie4)) {
       zombie1.x = 2000
       zombie2.x = 2000
       zombie3.x = 2000
       zombie4.x = 2000
-      location.reload();
+      alive = 0
     }
     if (zombie1.crashWith(pewPew)) {
       pewPew.x = 2000
@@ -277,11 +273,12 @@ function updateGameArea() {
       }
 			speed()
     }
+		}
 }
 
 let tile = 1
 function moveup() {
-  if (tile === 1) {
+  if (tile == 1) {
     tile = 6
     boxMomentLol.y = 219
   } else if (tile != 1) {
@@ -303,17 +300,10 @@ function movedown() {
   }
 }
 
-function moveleft() {
-    boxMomentLol.speedX = -3; 
-}
-
-function moveright() {
-    boxMomentLol.speedX = 3; 
-}
 
 document.addEventListener("keydown", function(event) {
     if (event.key === 's') {
-      if (dead === 0) {
+      if (alive == 1) {
         movedown();
       }
     }
@@ -321,7 +311,7 @@ document.addEventListener("keydown", function(event) {
 
 document.addEventListener("keydown", function(event) {
     if (event.key === 'w') {
-      if (dead === 0) {
+      if (alive == 1) {
         moveup();
       }
     }
@@ -335,7 +325,7 @@ let useFunc = 1
 document.addEventListener('keydown', function() {
   if (event.key === 'e') {
     if (useFunc === 1) {
-      if (dead === 0) {
+      if (alive == 1) {
         shootRight()
         useFunc = 0
       }
@@ -346,7 +336,7 @@ document.addEventListener('keydown', function() {
 document.addEventListener('keydown', function() {
   if (event.key === 'q') {
     if (useFunc === 1) {
-      if (dead === 0) {
+      if (alive == 1) {
         shootLeft()
         useFunc = 0
       }
