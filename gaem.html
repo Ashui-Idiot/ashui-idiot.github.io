@@ -323,7 +323,7 @@ function sleep(ms) {
 
 let useFunc = 1
 document.addEventListener('keydown', function() {
-  if (event.key === 'e') {
+  if (event.key === 'd' || event.key === 'e') {
     if (useFunc === 1) {
       if (alive == 1) {
         shootRight()
@@ -334,7 +334,7 @@ document.addEventListener('keydown', function() {
 });
 
 document.addEventListener('keydown', function() {
-  if (event.key === 'q') {
+  if (event.key === 'a' || event.key === 'q') {
     if (useFunc === 1) {
       if (alive == 1) {
         shootLeft()
