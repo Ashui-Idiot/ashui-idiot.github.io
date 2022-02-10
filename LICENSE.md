@@ -1,6 +1,6 @@
 # BSD 3-Clause License
 
-# Copyright (c) 2022, Yousef Al-Saihati, Ashia Riehl
+# Copyright (c) 2022, Ashia Riehl
 # All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
